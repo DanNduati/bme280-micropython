@@ -32,7 +32,13 @@ and back to 0 when the copying is done. The data are copied at power-on-reset an
 
 control registers
 -----------------
-config  - 0xF5
+config  - 0xF5 
+Sets the rate,filter and interface options of the device
+Writes to the config register in normal mode may be ignored in sleep mode however they are not ignored
+
+bit 7,6,5 - t_sb[2:0] -> controls inactive duration tstandby in normal mode
+bit 4,3,2 - filter[2:0] -> controls the time constant of the IIR filter 
+bit 0 - s 
 
 ctrl_meas - 0xF4 -> sets pressure and temperature data acquisition options of the device
 The register needs to be written after changing "ctrl_hum" for the changes to become effective
